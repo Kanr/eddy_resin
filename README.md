@@ -1,31 +1,27 @@
-## A Simple Server with Python Flask
+# resin-node-red
 
-This is a simple skeleton Flask server project that works on any of the devices supported by [resin.io][resin-link].
+A Node-RED application with [resin-supervisor](https://docs.resin.io/runtime/supervisor-api/) flow [support](https://github.com/resin-io-projects/node-red-contrib-resinio), can be managed remotely via resin.io [publicURL](https://docs.resin.io/management/devices/#enable-public-device-url)
 
-This project simply serves up `"Hello World!"` on port `:80` of your resin.io device.
+## Configure via [environment variables](https://docs.resin.io/management/env-vars/)
+Variable Name | Default | Description
+------------ | ------------- | -------------
+PORT | `80` | the port that exposes the Node-RED UI
+USERNAME | `none` | the Node-RED admin username
+PASSWORD | `none` | the Node-RED admin password [hash](https://nodered.org/docs/security#generating-the-password-hash)
 
-To get this project up and running, you will need to signup for a resin.io account [here][signup-page] and set up a device, have a look at our [Getting Started tutorial][gettingStarted-link]. Once you are set up with resin.io, you will need to clone this repo locally:
-```
-$ git clone git@github.com:resin-projects/simple-server-python.git
-```
-Then add your resin.io application's remote:
-```
-$ git remote add resin username@git.resin.io:username/myapp.git
-```
-and push the code to the newly added remote:
-```
-$ git push resin master
-```
-It should take a few minutes for the code to push. While you wait, lets enable device URLs so we can see the server outside of our local network. This option can be found in the `Actions` tab in your device dashboard.
-<!-- TODO: update images when port 8080 is deprecated. -->
-![Actions Tab](/img/enable-public-URLs.png)
+You **must** set the `USERNAME` and `PASSWORD` environment variables to be able to save or run programs in Node-RED.  
+The hash for the `PASSWORD` variable can be generated using the [`node-red-admin`](https://nodered.org/docs/node-red-admin)
+command line tool. Instructions for generating a password hash can be found in
+the [Node-RED documentation](https://nodered.org/docs/security#generating-the-password-hash).  
+More information about using and setting environment variables can be found in
+the [resin.io docs](https://docs.resin.io/management/env-vars/).
 
-Once the device is updated, you should see this in your logs:
-![log output](/img/log-output.png)
+## License
 
-Then in your browser you should be able to open the device URL and see the message "Hello World!".
+Copyright 2016 Resinio Ltd.
 
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-[resin-link]:https://resin.io/
-[signup-page]:https://dashboard.resin.io/signup
-[gettingStarted-link]:http://docs.resin.io/#/pages/installing/gettingStarted.md
+<http://www.apache.org/licenses/LICENSE-2.0>
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
